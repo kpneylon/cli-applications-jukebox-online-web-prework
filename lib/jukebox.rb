@@ -44,29 +44,31 @@ def run(my_songs)
   help()
   input = prompt()
   
- def run(songs)
-  command = "" 
-  while command  
+  def run(songs)
+  help
   puts "Please enter a command:"
-  command = gets.downcase.strip  
-  case command 
-    when 'list'
-      list(songs)
-      when 'play'
+  user_response = gets.chomp
+  while user_response != "exit"
+    case user_response
+      when "help"
+        help
+        puts "Please enter a command:"
+        user_response = gets.chomp
+      when "list"
         list(songs)
+        puts "Please enter a command:"
+        user_response = gets.chomp
+      when "play"
         play(songs)
-      when 'help'
-        help 
-      when 'exit'
-        exit_jukebox
-        break 
-      else 
-        help 
-      end 
-    end 
-  end 
-  run(songs)
-
+        puts "Please enter a command:"
+        user_response = gets.chomp
+      else
+        puts "Invalid input, please try again"
+        user_response = gets.chomp
+    end
+  end
+  exit_jukebox
+end 
 
 
 
